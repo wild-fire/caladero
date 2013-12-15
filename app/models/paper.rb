@@ -12,6 +12,10 @@ class Paper < ActiveRecord::Base
     quotes: '.gs_ri .gs_fl a',
     paper_url: '.gs_ggs.gs_fl a'
   }
+
+  extend Enumerize
+  enumerize :priority, in: { must_read: 3, interesting: 2, not_so_interesting: 1, discarded: 0}
+
   def obtain_from_google_scholar
 
     Rails.logger.info "[Scholar] Searching #{self.title} in Scholar"
