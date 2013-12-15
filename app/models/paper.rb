@@ -17,11 +17,15 @@ class Paper < ActiveRecord::Base
   extend Enumerize
   enumerize :priority, in: { must_read: 3, interesting: 2, not_so_interesting: 1, discarded: 0}
 
-  def obtain_from_google_scholar
+  def fetch!
 
     Rails.logger.info "[Scholar] Searching #{self.title} in Scholar"
 
-    doc = Nokogiri::HTML(open("http://scholar.google.es/scholar?hl=en&q=#{CGI.escape self.title}"))
+    url = "http://scholar.google.es/scholar?hl=en&q=#{CGI.escape self.title}"
+
+    Rails.logger.info "[Scholar] Downloading #{url}"
+
+    doc = Nokogiri::HTML(open(url))
 
     paper_result = doc.css(CSS_PAPER_QUERIES[:paper_results]).first
 
@@ -43,7 +47,7 @@ class Paper < ActiveRecord::Base
     # Now we get the authors and create them if we need it
     author_names = paper_result.css(CSS_PAPER_QUERIES[:author_names])
 
-    Rails.logger.info "[Scholar] Searching authors: #{author_names.text}"
+    Rails.logger.info "[Scholar] Obtaining authors: #{author_names.text}"
 
     author_names.each do |author_name|
       author_name = author_name.text
@@ -56,7 +60,7 @@ class Paper < ActiveRecord::Base
     year_text = paper_result.css(CSS_PAPER_QUERIES[:year]).text
 
     Rails.logger.info "[Scholar] Obtaining year: #{year_text}"
-    self.year = year_text.match(/(?<year>\d{4}) - [^-]*$/)[:year]
+    self.year = year_text.match(/(?<year>\d{4}) - .*$/)[:year]
 
     # And now the number of quotes
     quotes_text = paper_result.css(CSS_PAPER_QUERIES[:quotes]).first.text
@@ -66,7 +70,7 @@ class Paper < ActiveRecord::Base
     # And now a link to the paper
     paper_link = paper_result.css(CSS_PAPER_QUERIES[:paper_url]).first
     Rails.logger.info "[Scholar] Obtaining URL: #{paper_link}"
-    self.paper_url ||= paper_link[:href] # If we had a url we don't need a new one
+    self.paper_url ||= paper_link[:href] unless paper_link.nil? # If we had a url we don't need a new one
 
     self.save!
 
