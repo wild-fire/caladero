@@ -17,6 +17,18 @@ class Paper < ActiveRecord::Base
   extend Enumerize
   enumerize :priority, in: { must_read: 3, interesting: 2, not_so_interesting: 1, discarded: 0}
 
+  before_save :calculate_score
+
+  def calculate_score
+    self.score = (self.quotes_count || 1) / (Date.today.year - self.year + 1).to_f unless self.quotes_count.nil? || self.year.nil?
+  end
+
+  after_save :check_category_score
+
+  def check_category_score
+    self.category.update_attribute :score, [self.score, self.category.score].max
+  end
+
   def fetch!
 
     Rails.logger.info "[Scholar] Searching #{self.title} in Scholar"
