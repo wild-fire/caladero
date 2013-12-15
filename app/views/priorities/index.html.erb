@@ -1,0 +1,5 @@
+<ul>
+<% Paper.priority.values.each do |priority| %>
+  <li><%= link_to t("enumerize.priority.#{priority}"), priority_path(priority) %></li>
+<% end %>
+</ul>
