@@ -35,6 +35,7 @@ namespace :caladero do
           paper_title = line.gsub('###', '').strip # We delete the #s and any space
           paper = Paper.where(title: paper_title).first
           paper ||= Paper.new title: paper_title, description: ''
+          paper.priority = ENV['PRIORITY'] || paper.priority # We assign priority if we receive it
         when line.starts_with?('##') # Here we have the paper category
           Rails.logger.info ("[Import] Category #{line}")
           # We don't play with this, yet
