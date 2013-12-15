@@ -9,12 +9,13 @@ class Paper < ActiveRecord::Base
     paper_title: 'h3 a',
     author_names: '.gs_a a',
     year: '.gs_a',
+    quotes: '.gs_fl a'
   }
   def obtain_from_google_scholar
 
     Rails.logger.info "[Scholar] Searching #{self.title} in Scholar"
 
-    doc = Nokogiri::HTML(open("http://scholar.google.es/scholar?q=#{CGI.escape self.title}"))
+    doc = Nokogiri::HTML(open("http://scholar.google.es/scholar?hl=en&q=#{CGI.escape self.title}"))
 
     paper_result = doc.css(CSS_PAPER_QUERIES[:paper_results]).first
 
@@ -51,6 +52,10 @@ class Paper < ActiveRecord::Base
     Rails.logger.info "[Scholar] Obtaining year: #{year_text}"
     self.year = year_text.match(/(?<year>\d{4}) - [^-]*$/)[:year]
 
+    # And now the number of quotes
+    quotes_text = paper_result.css(CSS_PAPER_QUERIES[:quotes]).first.text
+    Rails.logger.info "[Scholar] Obtaining quotes: #{quotes_text}"
+    self.quotes_count = quotes_text.match(/ \d*$/).to_s.strip
 
     self.save!
 
