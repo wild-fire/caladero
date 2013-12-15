@@ -5,11 +5,12 @@ class Paper < ActiveRecord::Base
   has_and_belongs_to_many :authors
 
   CSS_PAPER_QUERIES = {
-    paper_results: '.gs_ri',
+    paper_results: '.gs_r',
     paper_title: 'h3 a',
     author_names: '.gs_a a',
     year: '.gs_a',
-    quotes: '.gs_fl a'
+    quotes: '.gs_ri .gs_fl a',
+    paper_url: '.gs_ggs.gs_fl a'
   }
   def obtain_from_google_scholar
 
@@ -56,6 +57,11 @@ class Paper < ActiveRecord::Base
     quotes_text = paper_result.css(CSS_PAPER_QUERIES[:quotes]).first.text
     Rails.logger.info "[Scholar] Obtaining quotes: #{quotes_text}"
     self.quotes_count = quotes_text.match(/ \d*$/).to_s.strip
+
+    # And now a link to the paper
+    paper_link = paper_result.css(CSS_PAPER_QUERIES[:paper_url]).first
+    Rails.logger.info "[Scholar] Obtaining URL: #{paper_link}"
+    self.paper_url ||= paper_link[:href] # If we had a url we don't need a new one
 
     self.save!
 
