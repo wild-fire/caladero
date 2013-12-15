@@ -20,4 +20,9 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  enumerize:
+    priority:
+      discarded: "Discarded"
+      interesting: "Interesting"
+      must_read: "Must read"
+      not_so_interesting: "Not really interesting but may be helpful"
