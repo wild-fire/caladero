@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131215171749) do
+ActiveRecord::Schema.define(version: 20131215171911) do
 
   create_table "authors", force: true do |t|
     t.string   "name"
@@ -39,7 +39,10 @@ ActiveRecord::Schema.define(version: 20131215171749) do
     t.integer  "quotes_count"
     t.string   "paper_url"
     t.integer  "priority"
+    t.integer  "category_id"
   end
+
+  add_index "papers", ["category_id"], name: "index_papers_on_category_id", using: :btree
 
   create_table "rails_admin_histories", force: true do |t|
     t.text     "message"
