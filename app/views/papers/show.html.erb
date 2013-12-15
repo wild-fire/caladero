@@ -1,0 +1,20 @@
+<h2><%= @paper.title %></h2>
+
+<ul>
+  <li><%= t('.quotes') %>: <%= @paper.quotes_count %></li>
+  <li><%= t('.year') %>: <%= @paper.year %></li>
+  <li><%= t('.score') %>: <%= @paper.score %></li>
+</ul>
+
+
+<ul>
+  <li><%= t('.priority') %>: <%= @paper.priority_text %></li>
+  <li><%= t('.category') %>: <%= @paper.category.name %></li>
+</ul>
+
+<%= link_to t('.download'), @paper.paper_url %>
+
+<p><%= t '.authors' %>: <%= @paper.authors.pluck(:name).join(',') %> </p>
+
+<p><%= @paper.description %></p>
+

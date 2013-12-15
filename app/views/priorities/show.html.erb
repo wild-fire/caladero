@@ -4,7 +4,7 @@
 
   <ul>
     <% papers.each do |paper| %>
-      <li><%= paper.title %> [<%= paper.score %>]</li>
+      <li><%= link_to paper.title, paper_path(paper) %> [<%= paper.score %>]</li>
     <% end %>
   </ul>
 <% end %>
