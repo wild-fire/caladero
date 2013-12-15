@@ -42,6 +42,8 @@ GEM
       railties (>= 3.2.6, < 5)
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    enumerize (0.7.0)
+      activesupport (>= 3.2)
     erubis (2.7.0)
     execjs (2.0.2)
     font-awesome-rails (4.0.3.0)
@@ -147,6 +149,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
   devise
+  enumerize
   jquery-rails
   pg
   rails (= 4.0.2)
