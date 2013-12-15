@@ -4,6 +4,8 @@ Caladero::Application.routes.draw do
 
   root 'priorities#index'
 
+  resources :priorities, only: [:show]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
