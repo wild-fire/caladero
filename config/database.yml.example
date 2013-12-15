@@ -1,0 +1,16 @@
+login: &login
+  adapter: postgresql
+  encoding: unicode
+  username: username
+  password: password
+  pool: 5
+  host: localhost
+  port: 5432
+
+development: &development
+  database: caladero_dev
+  <<: *login
+
+test: &test
+  database: caladero_test
+  <<: *login
