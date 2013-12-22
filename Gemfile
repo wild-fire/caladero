@@ -21,3 +21,5 @@ gem "devise"
 gem "enumerize"
 
 gem "friendly_id"
+
+gem 'rails_12factor', group: :production
