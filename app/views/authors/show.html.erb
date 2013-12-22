@@ -1,9 +1,9 @@
-<% @papers_with_categories.each do |category, papers| %>
+<% @papers_with_priorities.each do |priority, papers| %>
 
-  <h2><%= category.name %> [<%= number_to_score category.score %>]</h2>
+  <h2><%= link_to t("enumerize.priority.#{priority}"), priority_path(priority) %></h2>
 
   <ul>
-    <% papers.each do |paper| %>
+    <% papers.sort_by(&:score).reverse.each do |paper| %>
       <li><%= link_to paper.title, paper_path(paper) %> [<%= number_to_score paper.score %>]</li>
     <% end %>
   </ul>

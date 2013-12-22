@@ -6,7 +6,7 @@ class AuthorsController < ApplicationController
 
   def show
     @author = Author.includes(papers: :category).find(params[:id])
-    @papers_with_categories = @author.papers.order(score: :desc).group_by(&:category)
+    @papers_with_priorities = @author.papers.order(priority: :desc).group_by(&:priority)
   end
 
 end
