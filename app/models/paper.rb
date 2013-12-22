@@ -2,6 +2,9 @@ require 'open-uri'
 
 class Paper < ActiveRecord::Base
 
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+
   has_and_belongs_to_many :authors
   belongs_to :category
 

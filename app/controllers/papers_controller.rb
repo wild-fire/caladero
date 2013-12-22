@@ -1,7 +1,7 @@
 class PapersController < ApplicationController
 
   def show
-    @paper = Paper.find params[:id]
+    @paper = Paper.friendly.find params[:id]
   end
 
 end

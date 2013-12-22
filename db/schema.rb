@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131215180237) do
+ActiveRecord::Schema.define(version: 20131222111933) do
 
   create_table "authors", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
   end
 
   create_table "authors_papers", id: false, force: true do |t|
@@ -29,6 +30,7 @@ ActiveRecord::Schema.define(version: 20131215180237) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.float    "score",      default: 0.0
+    t.string   "slug"
   end
 
   create_table "papers", force: true do |t|
@@ -42,6 +44,7 @@ ActiveRecord::Schema.define(version: 20131215180237) do
     t.integer  "priority"
     t.integer  "category_id"
     t.float    "score",        default: 0.0
+    t.string   "slug"
   end
 
   add_index "papers", ["category_id"], name: "index_papers_on_category_id", using: :btree
