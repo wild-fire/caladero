@@ -9,7 +9,7 @@
 
 <ul>
   <li><%= t('.priority') %>: <%= link_to @paper.priority_text, priority_path(@paper.priority) %></li>
-  <li><%= t('.category') %>: <%= @paper.category.name %></li>
+  <li><%= t('.category') %>: <%= link_to @paper.category.name, category_path(@paper.category) %></li>
 </ul>
 
 <%= link_to t('.download'), @paper.paper_url %>
