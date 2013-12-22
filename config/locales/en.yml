@@ -20,6 +20,10 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  admin:
+    actions:
+      fetch_scholar:
+        menu: Fetch from Google Scholar
   enumerize:
     priority:
       discarded: "Discarded"
