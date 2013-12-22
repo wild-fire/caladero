@@ -31,7 +31,7 @@ RailsAdmin.config do |config|
   # config.excluded_models = []
 
   # Include specific models (exclude the others):
-  config.included_models = ['Paper']
+  config.included_models = ['Paper', 'Author']
 
   # Label methods for model instances:
   # config.label_methods << :description # Default is [:name, :title]
@@ -58,6 +58,7 @@ RailsAdmin.config do |config|
   config.model 'Paper' do
 
     list do
+      sort_by :title
       field :title
       field :category
       field :priority do
@@ -67,6 +68,20 @@ RailsAdmin.config do |config|
       end
       field :score
       field :year
+    end
+
+  end
+
+  config.model 'Author' do
+
+    list do
+      sort_by :name
+      field :name
+      field :papers do
+        pretty_value do
+           bindings[:object].papers.count
+        end
+      end
     end
 
   end
