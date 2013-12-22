@@ -1,3 +1,5 @@
+<h1><%= @category.name %></h1>
+
 <% @papers_with_priorities.each do |priority, papers| %>
 
   <h2><%= link_to t("enumerize.priority.#{priority}"), priority_path(priority) %></h2>
