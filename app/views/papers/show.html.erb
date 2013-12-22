@@ -14,7 +14,7 @@
 
 <%= link_to t('.download'), @paper.paper_url %>
 
-<p><%= t '.authors' %>: <%= @paper.authors.pluck(:name).join(',') %> </p>
+<p><%= t '.authors' %>: <%= raw @paper.authors.map{|a| link_to a.name, author_path(a)}.join(', ') %> </p>
 
 <p><%= @paper.description %></p>
 
