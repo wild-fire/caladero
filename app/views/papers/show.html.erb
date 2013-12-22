@@ -3,7 +3,7 @@
 <ul>
   <li><%= t('.quotes') %>: <%= @paper.quotes_count %></li>
   <li><%= t('.year') %>: <%= @paper.year %></li>
-  <li><%= t('.score') %>: <%= @paper.score %></li>
+  <li><%= t('.score') %>: <%= number_to_score @paper.score %></li>
 </ul>
 
 
