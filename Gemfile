@@ -19,3 +19,5 @@ gem 'rails_admin'
 gem "devise"
 
 gem "enumerize"
+
+gem "friendly_id"
