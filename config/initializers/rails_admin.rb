@@ -1,4 +1,5 @@
 require Rails.root.join('lib', 'rails_admin_fetch_scholar.rb')
+require Rails.root.join('lib', 'rails_admin_go_scholar.rb')
 # RailsAdmin config file. Generated on December 15, 2013 12:20
 # See github.com/sferik/rails_admin for more informations
 
@@ -53,6 +54,7 @@ RailsAdmin.config do |config|
     show_in_app
 
     fetch_scholar
+    go_scholar
   end
 
   config.model 'Paper' do

@@ -24,6 +24,8 @@ en:
     actions:
       fetch_scholar:
         menu: Fetch from Google Scholar
+      go_scholar:
+        menu: Search in Google Scholar
   enumerize:
     priority:
       discarded: "Discarded"
