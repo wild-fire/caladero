@@ -31,7 +31,7 @@ RailsAdmin.config do |config|
   # config.excluded_models = []
 
   # Include specific models (exclude the others):
-  # config.included_models = []
+  config.included_models = ['Paper']
 
   # Label methods for model instances:
   # config.label_methods << :description # Default is [:name, :title]
@@ -53,6 +53,22 @@ RailsAdmin.config do |config|
     show_in_app
 
     fetch_scholar
+  end
+
+  config.model 'Paper' do
+
+    list do
+      field :title
+      field :category
+      field :priority do
+        pretty_value do
+           bindings[:object].priority_text
+        end
+      end
+      field :score
+      field :year
+    end
+
   end
   ################  Model configuration  ################
 
