@@ -79,7 +79,7 @@ Caladero::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   # HTTP Basic authentication
-  config.middleware.insert_after(::Rack::Lock, "::Rack::Auth::Basic", "Caladero") do |u, p|
+  config.middleware.use("::Rack::Auth::Basic", "Caladero") do |u, p|
     [u, p] == [ENV['HTTP_USER'], ENV['HTTP_PASSWORD']]
   end unless ENV['HTTP_USER'].blank? || ENV['HTTP_PASSWORD'].blank?
 end
