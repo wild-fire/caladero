@@ -91,7 +91,7 @@ class Paper < ActiveRecord::Base
     Rails.logger.info "[Scholar] Obtaining URL: #{paper_link}"
     self.paper_url ||= paper_link[:href] unless paper_link.nil? # If we had a url we don't need a new one
 
-    self.save!
+    self.save
 
   end
 
