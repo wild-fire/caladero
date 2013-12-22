@@ -26,7 +26,7 @@ class Paper < ActiveRecord::Base
   after_save :check_category_score
 
   def check_category_score
-    self.category.update_attribute :score, [self.score, self.category.score].max
+    self.category.update_attribute :score, [self.score, self.category.score].max unless self.category.nil?
   end
 
   def fetch!
