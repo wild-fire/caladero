@@ -37,7 +37,11 @@ class Paper < ActiveRecord::Base
 
     Rails.logger.info "[Scholar] Downloading #{url}"
 
-    doc = Nokogiri::HTML(open(url))
+    http = Net::HTTP.new("scholar.google.com", 80)
+    req = Net::HTTP::Get.new("/scholar?hl=en&q=#{CGI.escape self.title}&btnG=&lr=", {'Referer' => 'http://scholar.google.com', 'User-Agent' => 'Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1312.35 Safari/537.17'})
+    response = http.request(req)
+
+    doc = Nokogiri::HTML(response.body)
 
     paper_result = doc.css(CSS_PAPER_QUERIES[:paper_results]).first
 
