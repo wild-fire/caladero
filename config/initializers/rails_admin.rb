@@ -1,3 +1,4 @@
+require Rails.root.join('lib', 'rails_admin_fetch_scholar.rb')
 # RailsAdmin config file. Generated on December 15, 2013 12:20
 # See github.com/sferik/rails_admin for more informations
 
@@ -35,7 +36,24 @@ RailsAdmin.config do |config|
   # Label methods for model instances:
   # config.label_methods << :description # Default is [:name, :title]
 
+  config.actions do
+    # root actions
+    dashboard                     # mandatory
+    # collection actions
+    index                         # mandatory
+    new
+    export
+    history_index
+    bulk_delete
+    # member actions
+    show
+    edit
+    delete
+    history_show
+    show_in_app
 
+    fetch_scholar
+  end
   ################  Model configuration  ################
 
   # Each model configuration can alternatively:
