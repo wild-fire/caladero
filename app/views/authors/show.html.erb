@@ -1,5 +1,13 @@
 <h1><%= @author.name %></h1>
 
+<h2>Coauthors</h2>
+
+<ul>
+<% @author.coauthors.each do |coauthor| %>
+  <li><%= link_to coauthor.name, author_path(coauthor) %></li>
+<% end %>
+</ul>
+
 <% @papers_with_priorities.each do |priority, papers| %>
 
   <h2><%= link_to t("enumerize.priority.#{priority}"), priority_path(priority) %></h2>
