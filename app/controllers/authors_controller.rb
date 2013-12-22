@@ -5,7 +5,7 @@ class AuthorsController < ApplicationController
   end
 
   def show
-    @author = Author.includes(papers: :category).find(params[:id])
+    @author = Author.includes(papers: :category).friendly.find(params[:id])
     @papers_with_priorities = @author.papers.order(priority: :desc).group_by(&:priority)
   end
 
