@@ -1,4 +1,4 @@
-require 'open-uri'
+require 'net/http'
 
 class Paper < ActiveRecord::Base
 
