@@ -1,0 +1,10 @@
+<% @papers_with_priorities.each do |priority, papers| %>
+
+  <h2><%= link_to t("enumerize.priority.#{priority}"), priority_path(priority) %></h2>
+
+  <ul>
+    <% papers.sort_by(&:score).reverse.each do |paper| %>
+      <li><%= link_to paper.title, paper_path(paper) %> [<%= paper.score %>]</li>
+    <% end %>
+  </ul>
+<% end %>
