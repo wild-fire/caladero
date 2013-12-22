@@ -13,6 +13,7 @@
 </ul>
 
 <%= link_to t('.download'), @paper.paper_url %>
+<%= link_to t('.scholar'), "http://scholar.google.com//scholar?hl=en&q=#{CGI.escape @paper.title}&btnG=&lr=" %>
 
 <p><%= t '.authors' %>: <%= raw @paper.authors.map{|a| link_to a.name, author_path(a)}.join(', ') %> </p>
 
