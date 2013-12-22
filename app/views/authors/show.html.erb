@@ -1,0 +1,10 @@
+<% @papers_with_categories.each do |category, papers| %>
+
+  <h2><%= category.name %> [<%= number_to_score category.score %>]</h2>
+
+  <ul>
+    <% papers.each do |paper| %>
+      <li><%= link_to paper.title, paper_path(paper) %> [<%= number_to_score paper.score %>]</li>
+    <% end %>
+  </ul>
+<% end %>

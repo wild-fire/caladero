@@ -6,6 +6,7 @@ Caladero::Application.routes.draw do
 
   resources :priorities, only: [:show]
   resources :papers, only: [:show]
+  resources :authors, only: [:index, :show]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

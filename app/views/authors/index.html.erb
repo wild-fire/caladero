@@ -1,0 +1,5 @@
+<ul>
+<% @authors.each do |author| %>
+  <li><%= link_to author.name, author_path(author) %> (<%= number_to_score author.papers.pluck(:score).max %>)</li>
+<% end %>
+</ul>
