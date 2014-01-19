@@ -86,6 +86,11 @@ RailsAdmin.config do |config|
       end
     end
 
+    edit do
+      field :name
+      field :papers
+    end
+
   end
 
   config.model 'Category' do
