@@ -20,6 +20,10 @@ class Paper < ActiveRecord::Base
   extend Enumerize
   enumerize :priority, { in: { must_read: 3, interesting: 2, not_so_interesting: 1, discarded: 0 }, scope: :prioritized_as }
 
+  def priority_enum
+    Paper.priority.values.map{|v| [v.text, v.value]}
+  end
+
   before_save :calculate_score
 
   def calculate_score
