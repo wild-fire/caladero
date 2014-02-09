@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131222111933) do
+ActiveRecord::Schema.define(version: 20140209111012) do
 
   create_table "authors", force: true do |t|
     t.string   "name"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20131222111933) do
     t.integer  "category_id"
     t.float    "score",        default: 0.0
     t.string   "slug"
+    t.boolean  "read",         default: false
   end
 
   add_index "papers", ["category_id"], name: "index_papers_on_category_id", using: :btree

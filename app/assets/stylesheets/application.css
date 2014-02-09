@@ -11,3 +11,7 @@
  *= require_self
  *= require_tree .
  */
+
+.read {
+  text-decoration: line-through;
+}
