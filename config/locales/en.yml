@@ -26,6 +26,8 @@ en:
         menu: Fetch from Google Scholar
       go_scholar:
         menu: Search in Google Scholar
+      mark_as_read:
+        menu: Mark as read/unread
   enumerize:
     priority:
       discarded: "Discarded"

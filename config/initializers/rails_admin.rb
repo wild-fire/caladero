@@ -1,5 +1,6 @@
 require Rails.root.join('lib', 'rails_admin_fetch_scholar.rb')
 require Rails.root.join('lib', 'rails_admin_go_scholar.rb')
+require Rails.root.join('lib', 'rails_admin_mark_as_read.rb')
 # RailsAdmin config file. Generated on December 15, 2013 12:20
 # See github.com/sferik/rails_admin for more informations
 
@@ -55,6 +56,7 @@ RailsAdmin.config do |config|
 
     fetch_scholar
     go_scholar
+    mark_as_read
   end
 
   config.model 'Paper' do
@@ -70,6 +72,7 @@ RailsAdmin.config do |config|
       end
       field :score
       field :year
+      field :read
     end
 
   end
