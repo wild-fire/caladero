@@ -36,6 +36,14 @@ class Paper < ActiveRecord::Base
     self.category.update_attribute :score, [self.score, self.category.score].max unless self.category.nil?
   end
 
+  def unread
+    !read?
+  end
+
+  def unread?
+    unread
+  end
+
   def fetch!
 
     Rails.logger.info "[Scholar] Searching #{self.title} in Scholar"
