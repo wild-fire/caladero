@@ -33,7 +33,7 @@ RailsAdmin.config do |config|
   # config.excluded_models = []
 
   # Include specific models (exclude the others):
-  config.included_models = ['Paper', 'Author', 'Category']
+  config.included_models = ['Paper', 'Author', 'Category', 'ResearchQuestion']
 
   # Label methods for model instances:
   # config.label_methods << :description # Default is [:name, :title]
@@ -106,6 +106,20 @@ RailsAdmin.config do |config|
            bindings[:object].papers.count
         end
       end
+    end
+
+  end
+
+  config.model 'ResearchQuestion' do
+
+    list do
+      sort_by :question
+      field :question
+    end
+
+    edit do
+      field :question
+      field :description, :ck_editor
     end
 
   end
