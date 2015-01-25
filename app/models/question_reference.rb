@@ -13,6 +13,11 @@ class QuestionReference < ActiveRecord::Base
       :paper_title
     end
 
+    nested do
+      field :paper
+      field :details, :ck_editor
+    end
+
   end
 
 end
