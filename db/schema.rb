@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150125164544) do
+ActiveRecord::Schema.define(version: 20150125164545) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,17 @@ ActiveRecord::Schema.define(version: 20150125164544) do
   end
 
   add_index "papers", ["category_id"], name: "index_papers_on_category_id", using: :btree
+
+  create_table "question_references", force: true do |t|
+    t.integer  "paper_id"
+    t.integer  "research_question_id"
+    t.text     "details"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "question_references", ["paper_id"], name: "index_question_references_on_paper_id", using: :btree
+  add_index "question_references", ["research_question_id"], name: "index_question_references_on_research_question_id", using: :btree
 
   create_table "rails_admin_histories", force: true do |t|
     t.text     "message"

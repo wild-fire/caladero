@@ -33,7 +33,7 @@ RailsAdmin.config do |config|
   # config.excluded_models = []
 
   # Include specific models (exclude the others):
-  config.included_models = ['Paper', 'Author', 'Category', 'ResearchQuestion']
+  config.included_models = ['Paper', 'Author', 'Category', 'ResearchQuestion', 'QuestionReference']
 
   # Label methods for model instances:
   # config.label_methods << :description # Default is [:name, :title]
@@ -110,28 +110,9 @@ RailsAdmin.config do |config|
 
   end
 
-  config.model 'ResearchQuestion' do
 
-    object_label_method do
-      :question
-    end
 
-    list do
-      sort_by :question
-      field :question
-    end
 
-    edit do
-      field :question
-      field :description, :ck_editor
-    end
-
-    show do
-      field :question
-      field :description
-    end
-
-  end
   ################  Model configuration  ################
 
   # Each model configuration can alternatively:
