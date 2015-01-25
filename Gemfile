@@ -15,6 +15,9 @@ gem 'therubyracer'
 gem 'jquery-rails'
 
 gem 'rails_admin'
+gem 'ckeditor'
+gem 'carrierwave'
+gem 'mini_magick'
 
 gem "devise"
 
