@@ -1,0 +1,14 @@
+<h2><%= t ".papers" %></h2>
+<ul>
+<% Paper.priority.values.each do |priority| %>
+  <li><%= link_to t("enumerize.priority.#{priority}"), priority_path(priority) %></li>
+<% end %>
+</ul>
+
+<h2><%= t ".research_questions" %></h2>
+
+<ul>
+<% ResearchQuestion.all.each do |question| %>
+  <li><%= link_to question.question, question %></li>
+<% end -%>
+</ul>

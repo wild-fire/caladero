@@ -34,3 +34,12 @@ en:
       interesting: "Interesting"
       must_read: "Must read"
       not_so_interesting: "Not really interesting but may be helpful"
+  researches:
+    show:
+      papers: Papers to read
+      research_questions: Open Questions
+  research_questions:
+    show:
+      by: By
+      references: References
+

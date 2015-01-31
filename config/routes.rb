@@ -3,12 +3,13 @@ Caladero::Application.routes.draw do
   devise_for :users
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
-  root 'priorities#index'
+  root 'researches#show'
 
   resources :priorities, only: [:show]
   resources :papers, only: [:show]
   resources :authors, only: [:index, :show]
   resources :categories, only: [:index, :show]
+  resources :research_questions, only: [:show]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
