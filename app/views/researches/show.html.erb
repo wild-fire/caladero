@@ -9,6 +9,6 @@
 
 <ul>
 <% ResearchQuestion.all.each do |question| %>
-  <li><%= question.question %></li>
+  <li><%= link_to question.question, question %></li>
 <% end -%>
 </ul>

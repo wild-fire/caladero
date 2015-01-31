@@ -1,0 +1,19 @@
+<h1><%= @research_question.question %></h1>
+
+<%= raw @research_question.description %>
+
+<h2><%= t '.references' %></h2>
+
+<% @research_question.question_references.group_by(&:category).each do |category, references| %>
+  <h3><%= category.titleize %></h3>
+  <ul>
+    <% references.each do |reference| %>
+      <li>
+        <%= link_to reference.paper.title, reference.paper %>
+        <%= raw reference.details %>
+      </li>
+    <% end -%>
+  </ul>
+<% end -%>
+
+
