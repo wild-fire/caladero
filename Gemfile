@@ -26,3 +26,4 @@ gem "enumerize"
 gem "friendly_id"
 
 gem 'rails_12factor', group: :production
+gem 'thin', group: :production
