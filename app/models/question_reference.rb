@@ -29,7 +29,7 @@ class QuestionReference < ActiveRecord::Base
       field :paper
       field :category, :enum do
         enum do
-          QuestionReference.pluck(:category).compact + ['']
+          QuestionReference.pluck(:category).uniq.compact + ['']
         end
       end
       field :new_category
