@@ -59,61 +59,6 @@ RailsAdmin.config do |config|
     mark_as_read
   end
 
-  config.model 'Paper' do
-
-    field :priority do
-      searchable false
-    end
-
-
-    list do
-      sort_by :title
-      field :title
-      field :category
-      field :priority do
-        pretty_value do
-           bindings[:object].priority_text
-        end
-      end
-      field :score
-      field :year
-      field :read
-    end
-
-  end
-
-  config.model 'Author' do
-
-    list do
-      sort_by :name
-      field :name
-      field :papers do
-        pretty_value do
-           bindings[:object].papers.count
-        end
-      end
-    end
-
-    edit do
-      field :name
-      field :papers
-    end
-
-  end
-
-  config.model 'Category' do
-
-    list do
-      sort_by :name
-      field :name
-      field :papers do
-        pretty_value do
-           bindings[:object].papers.count
-        end
-      end
-    end
-
-  end
 
 
 

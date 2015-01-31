@@ -117,4 +117,27 @@ class Paper < ActiveRecord::Base
     update_attribute :read, false
   end
 
+
+  rails_admin do
+
+    field :priority do
+      searchable false
+    end
+
+
+    list do
+      sort_by :title
+      field :title
+      field :category
+      field :priority do
+        pretty_value do
+           bindings[:object].priority_text
+        end
+      end
+      field :score
+      field :year
+      field :read
+    end
+
+  end
 end
