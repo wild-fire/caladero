@@ -10,6 +10,7 @@
     <% references.each do |reference| %>
       <li>
         <%= link_to reference.paper.title, reference.paper %>
+        <%= t '.by' %> <%= raw reference.paper.authors.map { |author|  link_to author.name, author }.join ',' %>
         <%= raw reference.details %>
       </li>
     <% end -%>

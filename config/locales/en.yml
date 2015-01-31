@@ -38,3 +38,8 @@ en:
     show:
       papers: Papers to read
       research_questions: Open Questions
+  research_questions:
+    show:
+      by: By
+      references: References
+
