@@ -120,16 +120,12 @@ class Paper < ActiveRecord::Base
 
   rails_admin do
 
-    field :priority do
-      searchable false
-    end
-
-
     list do
       sort_by :title
       field :title
       field :category
       field :priority do
+        searchable false
         pretty_value do
            bindings[:object].priority_text
         end
