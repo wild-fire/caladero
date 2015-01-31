@@ -18,7 +18,7 @@ module Caladero
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    # config.i18n.default_locale = :de
+    config.i18n.default_locale = ENV['LOCALE'] || 'en'
     config.secret_key_base ||= Rails.env.development? ? "TEST-#{Time.now.to_i}" : ENV['SECRET_TOKEN']
   end
 end
