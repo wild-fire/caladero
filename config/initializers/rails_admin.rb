@@ -61,6 +61,11 @@ RailsAdmin.config do |config|
 
   config.model 'Paper' do
 
+    field :priority do
+      searchable false
+    end
+
+
     list do
       sort_by :title
       field :title
